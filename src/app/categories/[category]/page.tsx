@@ -1,17 +1,18 @@
 import { Category } from '@/components/Category/Category';
 import Navigation from '@/components/Navigation/Navigation';
 
+
 export default async function FlokkaPage({
   params,
 }: {
-  params: Promise<{ flokkur: string }>;
+  params: Promise<{ category: string }>;
 }) {
-  const { flokkur } = await params;
-
+  const { category } = await params;
   return (
     <div>
       <Navigation />
-      <Category slug={flokkur} />
+      <h1>Flokkur: {category}</h1>
+      {/* <Category slug={category} /> */}
     </div>
   );
 }

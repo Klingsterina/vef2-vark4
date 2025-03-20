@@ -20,11 +20,11 @@ export function Category({ slug }: { slug: string }): JSX.Element {
         return;
       }
       console.log(response);
-      if (response.data.length === 0) {
+      if (response.length === 0) {
         setUiState('empty');
       } else {
         setUiState('data');
-        setQuestions(response.data);
+        setQuestions(response);
       }
     }
     fetchData();
@@ -38,6 +38,7 @@ export function Category({ slug }: { slug: string }): JSX.Element {
     case 'empty':
       return <p>Engin gögn fundust</p>;
     case 'data':
+      console.log(questions);
       return (
         <div>
           {questions.map((question) => (

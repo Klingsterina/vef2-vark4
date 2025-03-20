@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Navigation />
-      forsíða!
     </div>
   );
 }

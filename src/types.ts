@@ -1,16 +1,9 @@
 export type UiState = 'initial' | 'loading' | 'error' | 'data' | 'empty';
 
 export type Category = {
-  id: string;
+  id: number;
+  title: string;
   slug: string;
-  name: string;
-};
-
-export type Paginated<T> = {
-  data: T[];
-  total: number;
-  limit: number;
-  offset: number;
 };
 
 export type Answer = {
