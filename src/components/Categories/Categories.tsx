@@ -7,11 +7,11 @@ import { useEffect, useState } from 'react';
 import styles from './Categories.module.css';
 import ErrorComponent from '../Error/ErrorComponent';
 
-type Props = {
-  title: string;
-  tag?: string;
-  popular?: boolean;
-};
+// type Props = {
+//   title: string;
+//   tag?: string;
+//   popular?: boolean;
+// };
 
 export default function Categories() {
   const [uiState, setUiState] = useState<UiState>('initial');
