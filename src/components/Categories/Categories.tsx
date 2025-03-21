@@ -13,7 +13,7 @@ type Props = {
   popular?: boolean;
 };
 
-export default function Categories({ title }: Props) {
+export default function Categories() {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [categories, setCategories] = useState<Category[] | null>(
     null,
@@ -41,16 +41,14 @@ export default function Categories({ title }: Props) {
   console.log(categories);
 
   return (
-    <div className={styles.cats}>
-      <h2>{title}</h2>
-
+    <div className={styles.container}>
       {uiState === 'loading' && <p>Sæki flokka</p>}
       {uiState === 'error' && <ErrorComponent />}
       {uiState === 'data' && (
         <ul>
           {categories?.map((category: Category, index: number) => (
-            <li key={index}>
-              <Link href={`/categories/${category.slug}`}>{category.title}</Link>
+            <li className={styles.flokkar} key={index}>
+              <Link className={styles.Link} href={`/categories/${category.slug}`}>{category.title}</Link>
             </li>
           ))}
         </ul>

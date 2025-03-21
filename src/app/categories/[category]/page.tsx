@@ -1,5 +1,6 @@
 import { Category } from '@/components/Category/Category';
 import Navigation from '@/components/Navigation/Navigation';
+import Link from 'next/link';
 
 
 export default async function CategoryPage({
@@ -9,10 +10,11 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
   return (
-    <div>
+    <div className='container'>
       <Navigation />
-      <h1>Flokkur: {category}</h1>
+      <h1>{category}</h1>
       <Category slug={category} />
+      <Link className="tilbaka" href="/addQuestion">Bæta við spurningu</Link>
     </div>
   );
 }

@@ -7,33 +7,61 @@ export function Question({
   question: TQuestion;
 }): JSX.Element {
   const [answerId, setAnswerId] = React.useState<number | null>(null);
+  // Til að sýna/hafa stjórn á því hvort notandi hafi sent svarið
+  const [submitted, setSubmitted] = React.useState<boolean>(false);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('submit, valið svar:', answerId);
+    setSubmitted(true);
+
+    // Athugum hvaða svar notandinn valdi
+    const chosenAnswer = question.answers.find((a) => a.id === answerId);
+    if (!chosenAnswer) {
+      console.log('Enginn valdi svar');
+      return;
+    }
+
+    if (chosenAnswer.correct) {
+      console.log('Rétt svar!');
+    } else {
+      console.log('Rangt svar!');
+    }
   };
 
   return (
-    <div>
-      <h2>{question.body}</h2>
-      <form onSubmit={onSubmit}>
-        <ul>
+    <li className='space'>
+      <p className="question">{question.body}</p>
+      <p className="bold">Svarmöguleikar:</p>
+      <form className='answer-list' onSubmit={onSubmit}>
+        <ol>
           {question.answers.map((answer: Answer) => {
+            const isChosen = answerId === answer.id;
+            const liClassName =
+              submitted && isChosen
+                ? answer.correct
+                  ? 'answer-list correct'
+                  : 'answer-list incorrect'
+                : 'answer-list';
+
             return (
-              <li key={answer.id}>
+              <li className={liClassName} key={answer.id}>
                 <input
                   type="radio"
                   name="answer"
                   value={answer.id}
-                  onChange={() => setAnswerId(answer.id)}
+                  checked={isChosen}
+                  onChange={() => {
+                    setAnswerId(answer.id);
+                    setSubmitted(false); // Endurstilla ef notandi skiptir um svar
+                  }}
                 />
-                {answer.body}—{answer.correct ? 'RÉTT' : 'RANGT'}
+                <label>{answer.body}</label>
               </li>
             );
           })}
-        </ul>
-        <button>Svara</button>
+        </ol>
+        <button type="submit">Senda svar</button>
       </form>
-    </div>
+    </li>
   );
 }

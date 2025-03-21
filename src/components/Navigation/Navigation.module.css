@@ -1,5 +1,18 @@
-.nav {
-    background-color: pink;
-  }
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
-  
+.tilbaka {
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  padding: 0.5rem;
+}
+
+.tilbaka:hover {
+  background-color: #f4f4f4;
+}

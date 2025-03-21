@@ -4,10 +4,8 @@ import styles from './Navigation.module.css'
 
 export default function Navigation() {
   return (
-    <nav className={styles.nav}>
-      <ul>
-        <li><Link href="/">Forsíða</Link></li>
-      </ul>
-    </nav>
+    <div className={styles.links}>
+        <Link className={styles.tilbaka} href="/">Forsíða</Link>
+    </div>
   );
 }

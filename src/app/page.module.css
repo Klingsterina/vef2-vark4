@@ -1,4 +1,23 @@
-.page {
-    max-width: 500px;
+.container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .container h2 {
+  font-size: 2rem;
+  }
+
+  .tilbaka {
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 0.5rem;
+  }
+  
+  .tilbaka:hover {
+    background-color: #f4f4f4;
   }

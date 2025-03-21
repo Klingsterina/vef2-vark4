@@ -1,3 +1,22 @@
-.cats {
-  background-color: beige;
+.Link {
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.flokkar {
+  margin: 10px 0;
+}
+
+.Link {
+  display: block;
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.Link:hover {
+  background: #0056b3;
 }

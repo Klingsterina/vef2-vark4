@@ -38,11 +38,11 @@ export function Category({ slug }: { slug: string }): JSX.Element {
     case 'data':
       console.log(category);
       return (
-        <div>
+        <ol className='question-list'>
           {category && category.questions.map((question) => (
             <Question key={question.id} question={question} />
           ))}
-        </div>
+        </ol>
       );
     case 'initial':
       return <p>Þú hefur ekki valið flokk</p>;
