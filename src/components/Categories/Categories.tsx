@@ -28,6 +28,8 @@ export default function Categories({ title }: Props) {
 
       if (!categoriesResponse) {
         setUiState('error');
+      } else if(categoriesResponse.length === 0) {
+        setUiState('empty');
       } else {
         setUiState('data');
         setCategories(categoriesResponse);

@@ -34,10 +34,9 @@ export class QuestionsApi {
   }
 
   async getCategory(slug: string): Promise<Category | null> {
-    const url = BASE_URL + `/categories/${slug}`;
+    const url = BASE_URL + `/questions?category=${slug}`;
 
     const response = await this.fetchFromApi<Category | null>(url);
-
     return response;
   }
 

@@ -2,7 +2,7 @@ import { Category } from '@/components/Category/Category';
 import Navigation from '@/components/Navigation/Navigation';
 
 
-export default async function FlokkaPage({
+export default async function CategoryPage({
   params,
 }: {
   params: Promise<{ category: string }>;
@@ -12,7 +12,7 @@ export default async function FlokkaPage({
     <div>
       <Navigation />
       <h1>Flokkur: {category}</h1>
-      {/* <Category slug={category} /> */}
+      <Category slug={category} />
     </div>
   );
 }

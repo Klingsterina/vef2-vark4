@@ -1,30 +1,28 @@
 'use client';
 
 import { QuestionsApi } from '@/api';
-import { Question as TQuestion, UiState } from '@/types';
+import { Category as TCategory, UiState } from '@/types';
 import { JSX, useEffect, useState } from 'react';
 import { Question } from '../Question/Question';
 
 export function Category({ slug }: { slug: string }): JSX.Element {
   const [uiState, setUiState] = useState<UiState>('initial');
-  const [questions, setQuestions] = useState<TQuestion[]>([]);
+  const [category, setCategory] = useState<TCategory | null>(null);
 
   useEffect(() => {
     async function fetchData() {
       setUiState('loading');
       const api = new QuestionsApi();
-      const response = await api.getQuestions(slug);
+      const response: TCategory | null = await api.getCategory(slug);
+      console.log("response", response);
 
       if (!response) {
         setUiState('error');
-        return;
-      }
-      console.log(response);
-      if (response.length === 0) {
+      } else if (response.questions.length === 0) {
         setUiState('empty');
       } else {
         setUiState('data');
-        setQuestions(response);
+        setCategory(response);
       }
     }
     fetchData();
@@ -34,14 +32,14 @@ export function Category({ slug }: { slug: string }): JSX.Element {
     case 'loading':
       return <p>Sæki gögn...</p>;
     case 'error':
-      return <p>Villa við að sækja gögn</p>;
+      return <p>404: Villa við að sækja gögn</p>;
     case 'empty':
       return <p>Engin gögn fundust</p>;
     case 'data':
-      console.log(questions);
+      console.log(category);
       return (
         <div>
-          {questions.map((question) => (
+          {category && category.questions.map((question) => (
             <Question key={question.id} question={question} />
           ))}
         </div>

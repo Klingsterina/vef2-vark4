@@ -1,10 +1,10 @@
 import React, { JSX } from 'react';
-import { Question as QuestionType } from '../../types';
+import { Answer, Question as TQuestion } from '../../types';
 
 export function Question({
   question,
 }: {
-  question: QuestionType;
+  question: TQuestion;
 }): JSX.Element {
   const [answerId, setAnswerId] = React.useState<number | null>(null);
 
@@ -15,11 +15,10 @@ export function Question({
 
   return (
     <div>
-      <h2>{question.text}</h2>
+      <h2>{question.body}</h2>
       <form onSubmit={onSubmit}>
         <ul>
-          {question.answers.map((answer) => {
-            const isCorrect = answerId === answer.id && answer.correct;
+          {question.answers.map((answer: Answer) => {
             return (
               <li key={answer.id}>
                 <input
@@ -28,7 +27,7 @@ export function Question({
                   value={answer.id}
                   onChange={() => setAnswerId(answer.id)}
                 />
-                {answer.text}—{isCorrect ? 'RÉTT' : 'RANGT'}
+                {answer.body}—{answer.correct ? 'RÉTT' : 'RANGT'}
               </li>
             );
           })}

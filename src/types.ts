@@ -4,17 +4,19 @@ export type Category = {
   id: number;
   title: string;
   slug: string;
+  questions: Question[];
 };
 
 export type Answer = {
   id: number;
-  text: string;
+  questionId: number;
+  body: string;
   correct: boolean;
 };
 
 export type Question = {
   id: number;
-  text: string;
+  body: string;
   answers: Answer[];
-  category: Category;
+  categorySlug: string;
 };
