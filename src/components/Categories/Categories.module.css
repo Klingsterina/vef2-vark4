@@ -1,14 +1,10 @@
-.Link {
-  padding: 8px;
-  font-size: 0.9rem;
-}
-
 .flokkar {
   margin: 10px 0;
 }
 
-.Link {
+.link {
   display: block;
+  font-size: 0.9rem;
   background: #007bff;
   color: white;
   padding: 10px;
@@ -17,6 +13,6 @@
   transition: 0.3s;
 }
 
-.Link:hover {
+.link:hover {
   background: #0056b3;
 }

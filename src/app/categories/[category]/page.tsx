@@ -2,8 +2,6 @@ import { QuestionsApi } from '@/api';
 import { Category } from '@/components/Category/Category';
 import Navigation from '@/components/Navigation/Navigation';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-
 
 export default async function CategoryPage({
   params,

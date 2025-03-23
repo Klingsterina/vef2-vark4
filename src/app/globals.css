@@ -75,29 +75,21 @@ label {
 .answer-list {
   padding: 10px;
   list-style: upper-alpha;
-  /* margin-bottom: 3rem; */
-  }
+}
   
 .answer-list button {
   display: block;
-  /* width: 100%; */
-  /* padding: 10px; */
-  /* margin: 5px 0; */
   cursor: pointer;
   font-size: 1rem;
   border-radius: 5px;
   border: 2px solid black;
   color: black;
+  padding: 8px;
 }
 
 .answer-list li::marker {
   font-size: 1rem;
   font-weight: normal;
-}
-
-.answer-list button {
-  font-size: 0.9rem;
-  padding: 8px;
 }
 
 .tilbaka {
@@ -125,7 +117,7 @@ label {
     max-width: 900px;
   }
 
-  .Link {
+  .link {
       font-size: 1.1rem;
     }
 }
@@ -162,7 +154,7 @@ padding: 5px;
 text-align: center;
 }
 
-#addAnswer, .submit {
+#add-answer, .submit {
   margin-top: 0.5rem;
   padding: 10px;
 }
@@ -187,7 +179,7 @@ text-align: center;
   white-space: nowrap;
 }
 
-textarea, input[type="text"], select {
+textarea, input[type="text"], .heiti-flokks select {
   width: 100%;
   max-width: 300px; 
   padding: 8px;

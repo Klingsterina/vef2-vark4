@@ -48,7 +48,7 @@ export default function Categories() {
         <ul>
           {categories?.map((category: Category, index: number) => (
             <li className={styles.flokkar} key={index}>
-              <Link className={styles.Link} href={`/categories/${category.slug}`}>{category.title}</Link>
+              <Link className={styles.link} href={`/categories/${category.slug}`}>{category.title}</Link>
             </li>
           ))}
         </ul>
