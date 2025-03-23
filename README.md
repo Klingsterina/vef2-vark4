@@ -22,25 +22,15 @@ npm install
 
 ## Keyra verkefnið
 
-### 3. Development mode
-```bash
-npm run dev
-```
-
 ### 4. Production mode
 ```bash
 npm run build
 npm run start
 ```
 
-## Búðu til skrá í rót verkefnisins:
+## Búðu til .env skrá í rót verkefnisins:
 
-### Locally: .env.development
-```bash
-NEXT_PUBLIC_BASE_URL=http://localhost:8000
-```
-
-### production: .env
+### production
 ```bash
 NEXT_PUBLIC_BASE_URL=https://vef2-verk3-l8lm.onrender.com
 ```
