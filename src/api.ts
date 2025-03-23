@@ -1,4 +1,4 @@
-import { Category, Question } from './types';
+import { Category, Question, QuestionPostBody } from './types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:8000';
 
@@ -33,6 +33,23 @@ export class QuestionsApi {
     return json as T;
   }
 
+  async postToApi<T>(url: string, body: T): Promise<Response | null> {
+    let response: Response | undefined;
+    try {
+      response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+    } catch (e) {
+      console.error('error fetching from api', url, e);
+      return null;
+    }
+    return response
+  }
+
   async getCategory(slug: string): Promise<Category | null> {
     const url = BASE_URL + `/questions?category=${slug}`;
 
@@ -59,5 +76,14 @@ export class QuestionsApi {
     const response = await this.fetchFromApi<Question[]>(url);
 
     return response;
+  }
+
+  async createQuestion(body: QuestionPostBody): Promise<boolean> {
+    const url = BASE_URL + '/questions';
+    const response = await this.postToApi<QuestionPostBody>(url, body);
+    if (!response) {
+      return false;
+    }
+    return response.ok ? true : false;    
   }
 }

@@ -20,3 +20,14 @@ export type Question = {
   answers: Answer[];
   categorySlug: string;
 };
+
+export type AnswerPostBody = {
+  body: string;
+  correct: boolean;
+};
+
+export type QuestionPostBody = {
+  body: string;
+  categorySlug: string;
+  answers: AnswerPostBody[];
+};
