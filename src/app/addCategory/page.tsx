@@ -1,9 +1,10 @@
 import Navigation from "@/components/Navigation/Navigation";
+import AddCategory from "@/components/AddCategory/AddCategory";
 function AddCategoryPage() {
     return (
-        <div>
+        <div className="container">
             <h1>Create a category</h1>
-            <p>mamma</p>
+            <AddCategory/>
             <Navigation />
         </div>
     );

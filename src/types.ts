@@ -31,3 +31,7 @@ export type QuestionPostBody = {
   categorySlug: string;
   answers: AnswerPostBody[];
 };
+
+export type CategoryPostBody = {
+  title: string;
+};

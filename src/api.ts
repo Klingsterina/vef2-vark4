@@ -1,4 +1,4 @@
-import { Category, Question, QuestionPostBody } from './types';
+import { Category, CategoryPostBody, Question, QuestionPostBody } from './types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:8000';
 
@@ -71,10 +71,7 @@ export class QuestionsApi {
     categorySlug: string,
   ): Promise<Question[] | null> {
     const url = BASE_URL + `/questions?category=${categorySlug}`;
-    // new URL()
-
     const response = await this.fetchFromApi<Question[]>(url);
-
     return response;
   }
 
@@ -85,5 +82,14 @@ export class QuestionsApi {
       return false;
     }
     return response.ok ? true : false;    
+  }
+
+  async createCategory(body: CategoryPostBody): Promise<boolean> {
+    const url = BASE_URL + '/categories';
+    const response = await this.postToApi<CategoryPostBody>(url, body);
+    if (!response) {
+      return false;
+    }
+    return response.ok ? true : false;
   }
 }

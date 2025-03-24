@@ -47,7 +47,6 @@ export default function Form() {
 
     const questionBody = formData.get('body')?.toString().trim();
     const categorySlug = formData.get('categorySlug');
-    // Nýju svarmöguleikarnir eru allir með name="answerBody[]" í React
     const answerBodies = formData.getAll('answerBody[]').map((val) =>
       val.toString().trim()
     );
