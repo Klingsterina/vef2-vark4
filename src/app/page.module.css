@@ -19,6 +19,14 @@
   cursor: pointer;
 }
 
+.penPatch {
+  position: absolute;
+  right: 40px;
+  top: 75px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
   .tilbaka {
     border: 2px solid black;
     border-radius: 5px;

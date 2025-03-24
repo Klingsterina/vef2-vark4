@@ -124,5 +124,24 @@ export class QuestionsApi {
       return false;
     }
   }
+
+  async patchCategory(slug: string, title: string): Promise<boolean> {
+    const url = `${BASE_URL}/categories/${slug}`;
+  
+    try {
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title }),
+      });
+  
+      return response.ok;
+    } catch (e) {
+      console.error('Villa við breytingu:', e);
+      return false;
+    }
+  }
   
 }

@@ -7,14 +7,15 @@ import { useEffect, useState } from 'react';
 import styles from './Categories.module.css';
 import ErrorComponent from '../Error/ErrorComponent';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
-import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleMinus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 config.autoAddCss = false;
 library.add(faCircleMinus);
+library.add(faPencil);
 
-export default function Categories({ showDeleteIcons }: { showDeleteIcons: boolean }) {
+export default function Categories({ showDeleteIcons, showPatchIcon }: { showDeleteIcons: boolean, showPatchIcon: boolean }) {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [categories, setCategories] = useState<Category[] | null>(
     null,
@@ -56,6 +57,26 @@ export default function Categories({ showDeleteIcons }: { showDeleteIcons: boole
       alert('Tókst ekki að eyða flokknum.');
     }
   }
+
+  async function handlePatchCategories(categorySlug: string) {
+    const newTitle = prompt('Sláðu inn nýjan titil á flokkinn');
+    if (!newTitle) return;
+    const api = new QuestionsApi();
+    const success = await api.patchCategory(categorySlug, newTitle);
+
+    if (success) {
+      const newSlug = newTitle.toLowerCase().replace(/ /g, '-');
+      setCategories(prev =>
+        prev?.map(category =>
+          category.slug === categorySlug
+            ? { ...category, title: newTitle, slug: newSlug }
+            : category
+        ) || null
+      );
+    } else {
+      alert('Tókst ekki að breyta flokknum.');
+    }
+  }
   
 
   return (
@@ -66,6 +87,13 @@ export default function Categories({ showDeleteIcons }: { showDeleteIcons: boole
         <ul>
           {categories?.map((category: Category, index: number) => (
             <li className={styles.flokkar} key={index}>
+              {showPatchIcon && (
+                <FontAwesomeIcon 
+                  icon={['fas', 'pencil']}
+                  className={styles.pen}
+                  onClick={() => handlePatchCategories(category.slug)}
+                />
+              )}
               {showDeleteIcons && (
                 <FontAwesomeIcon
                   icon={['fas', 'circle-minus']}

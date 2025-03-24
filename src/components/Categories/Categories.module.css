@@ -24,6 +24,15 @@
   position: absolute;
 }
 
+.pen {
+  color: #fff;
+  cursor: pointer;
+  right: 40px;
+  top: 35%;
+  border-radius: 50%;
+  position: absolute;
+}
+
 .link:hover {
   background: #0056b3;
 }
