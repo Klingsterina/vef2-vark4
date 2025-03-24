@@ -19,7 +19,7 @@ export default async function CategoryPage({
       <div className='container'>
         <h1>Error</h1>
         <h1>404</h1>
-        <p>Flokkurinn {category} fannst ekki</p>
+        <p style={{padding: "0.5rem"}}>Flokkurinn {category} fannst ekki</p>
         <Navigation />
       </div>
     )
