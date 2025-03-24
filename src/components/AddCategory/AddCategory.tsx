@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import xss from 'xss';
 import { QuestionsApi } from '@/api';
 import { CategoryPostBody } from '@/types';

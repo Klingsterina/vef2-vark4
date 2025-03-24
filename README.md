@@ -1,6 +1,7 @@
 # VEF2 Verkefni 4
 
 📎 hlekkur: [https://vef2-vark4.onrender.com/](https://vef2-vark4.onrender.com/)
+Þið þurfið að vera smá þolinmóðir þegar þið opnið vefsíðuna, tekur nokkrar sec fyrir bakendann og framendann að loada
 
 Þetta er Next.js verkefni fyrir VEF2. Hér eru leiðbeiningar um hvernig á að klóna verkefnið, setja það upp og keyra það í development eða production.
 
