@@ -50,6 +50,23 @@ export class QuestionsApi {
     return response
   }
 
+  async deleteFromApi(url: string): Promise<Response | null> {
+    let response: Response | undefined;
+    try {
+      response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+    catch (e) {
+      console.error('error fetching from api', url, e);
+      return null;
+    }
+    return response
+  }
+
   async getCategory(slug: string): Promise<Category | null> {
     const url = BASE_URL + `/questions?category=${slug}`;
 
@@ -92,4 +109,20 @@ export class QuestionsApi {
     }
     return response.ok ? true : false;
   }
+
+  async deleteCategory(slug: string): Promise<boolean> {
+    const url = `${BASE_URL}/categories/${slug}`;
+  
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+      });
+  
+      return response.ok;
+    } catch (e) {
+      console.error('Villa við eyðingu:', e);
+      return false;
+    }
+  }
+  
 }

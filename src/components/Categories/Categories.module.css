@@ -1,5 +1,6 @@
 .flokkar {
   margin: 10px 0;
+  position: relative;
 }
 
 .link {
@@ -11,6 +12,16 @@
   text-decoration: none;
   border-radius: 5px;
   transition: 0.3s;
+}
+
+.delete {
+  color: #f00;
+  cursor: pointer;
+  right: 20px;
+  top: 35%;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
 }
 
 .link:hover {

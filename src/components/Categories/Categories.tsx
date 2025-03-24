@@ -6,14 +6,15 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './Categories.module.css';
 import ErrorComponent from '../Error/ErrorComponent';
+import { config, library } from '@fortawesome/fontawesome-svg-core';
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// type Props = {
-//   title: string;
-//   tag?: string;
-//   popular?: boolean;
-// };
+config.autoAddCss = false;
+library.add(faCircleMinus);
 
-export default function Categories() {
+export default function Categories({ showDeleteIcons }: { showDeleteIcons: boolean }) {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [categories, setCategories] = useState<Category[] | null>(
     null,
@@ -40,15 +41,40 @@ export default function Categories() {
 
   console.log(categories);
 
+  async function handleDeleteCategory(categorySlug: string) {
+    const agreed = confirm('Ertu viss um að þú viljir eyða þessum flokki?');
+
+    if (!agreed) return;
+    const api = new QuestionsApi();
+    const success = await api.deleteCategory(categorySlug);
+  
+    if (success) {
+      setCategories(prev =>
+        prev?.filter(category => category.slug !== categorySlug) || null
+      );
+    } else {
+      alert('Tókst ekki að eyða flokknum.');
+    }
+  }
+  
+
   return (
-    <div className={styles.container}>
-      {uiState === 'loading' && <p>Sæki flokka</p>}
+    <div style={{ marginBottom: '20px'}}>
+      {uiState === 'loading' && <p style={{paddingBottom:"10px"}}>Sæki flokka....</p>}
       {uiState === 'error' && <ErrorComponent />}
       {uiState === 'data' && (
         <ul>
           {categories?.map((category: Category, index: number) => (
             <li className={styles.flokkar} key={index}>
-              <Link className={styles.link} href={`/categories/${category.slug}`}>{category.title}</Link>
+              {showDeleteIcons && (
+                <FontAwesomeIcon
+                  icon={['fas', 'circle-minus']}
+                  className={styles.delete}
+                  onClick={() => handleDeleteCategory(category.slug)}
+                />
+              )}
+              <Link className={styles.link} href={`/categories/${category.slug}`}>{category.title}
+              </Link>
             </li>
           ))}
         </ul>

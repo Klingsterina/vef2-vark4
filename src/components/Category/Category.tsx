@@ -5,6 +5,7 @@ import { Category as TCategory, UiState } from '@/types';
 import { JSX, useEffect, useState } from 'react';
 import { Question } from '../Question/Question';
 
+
 export function Category({ slug }: { slug: string }): JSX.Element {
   const [uiState, setUiState] = useState<UiState>('initial');
   const [category, setCategory] = useState<TCategory | null>(null);
@@ -30,21 +31,22 @@ export function Category({ slug }: { slug: string }): JSX.Element {
 
   switch (uiState) {
     case 'loading':
-      return <p>Sæki gögn...</p>;
+      return <p style={{paddingBottom:"10px"}}>Sæki gögn...</p>;
     case 'error':
       return <p>404: Villa við að sækja gögn</p>;
     case 'empty':
-      return <p>Engin gögn fundust</p>;
+      return <p style={{paddingBottom:"10px"}}>Engin gögn fundust</p>;
     case 'data':
       console.log(category);
       return (
         <ol className='question-list'>
           {category && category.questions.map((question) => (
             <Question key={question.id} question={question} />
+          
           ))}
         </ol>
       );
     case 'initial':
-      return <p>Þú hefur ekki valið flokk</p>;
+      return <p style={{paddingBottom:"10px"}}>Þú hefur ekki valið flokk</p>;
   }
 }
