@@ -16,6 +16,16 @@ export default function AddCategory() {
         const formData = new FormData(form);
 
         const categoryName = xss(formData.get('categoryName') as string);
+
+        if (categoryName.length < 3) {
+            alert('Titill þarf að vera að minnsta kosti 3 stafir!');
+            return;
+        }
+        
+        if (categoryName.length > 20) {
+            alert('Titill má að hámarki vera 20 stafir!');
+            return;
+        }
         const api = new QuestionsApi();
         const body: CategoryPostBody = {
             title: categoryName

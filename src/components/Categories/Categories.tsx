@@ -61,6 +61,10 @@ export default function Categories({ showDeleteIcons, showPatchIcon }: { showDel
   async function handlePatchCategories(categorySlug: string) {
     const newTitle = prompt('Sláðu inn nýjan titil á flokkinn');
     if (!newTitle) return;
+    if (newTitle.length > 20) {
+      alert('Titill má að hámarki vera 20 stafir!');
+      return;
+    }
     const api = new QuestionsApi();
     const success = await api.patchCategory(categorySlug, newTitle);
 
