@@ -21,7 +21,7 @@ export default function Home() {
     <div className={styles.container} style={{ position: 'relative' }}>
       <h1>Flokkar</h1>
       <FontAwesomeIcon 
-        className={styles.penPatch}
+        className={styles.edit}
         icon={['fas', 'pen-to-square']}
         onClick={() => setShowPatchIcon(prev => !prev)}
       />
