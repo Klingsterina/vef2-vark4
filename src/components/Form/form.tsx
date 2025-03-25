@@ -112,7 +112,7 @@ export default function Form() {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="spurning">
-        <label htmlFor="questionBody">Question</label>
+        <label htmlFor="questionBody">Spurning</label>
         <textarea
           id="questionBody"
           name="body"
