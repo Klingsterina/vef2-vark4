@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.penPatch {
+.edit {
   position: absolute;
   right: 40px;
   top: 75px;
