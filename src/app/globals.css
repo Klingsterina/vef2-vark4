@@ -192,23 +192,63 @@ textarea, input[type="text"], .heiti-flokks select {
     width: 278px;
   }
 }
+
 @media (max-width: 390px) {
   .answer {
     width: 268px;
   }
 }
+
 @media (max-width: 380px) {
   .answer {
     width: 258px;
   }
 }
+
 @media (max-width: 370px) {
   .answer {
     width: 248px;
   }
 }
+
 @media (max-width: 360px) {
   .answer {
+    width: 228px;
+  }
+}
+
+@media (max-width: 350px) {
+  .answer {
     width: 238px;
+  }
+}
+
+@media (max-width: 340px) {
+  .answer {
+    width: 228px;
+  }
+}
+
+@media (max-width: 330px) {
+  .answer {
+    width: 218px;
+  }
+}
+
+@media (max-width: 320px) {
+  .answer {
+    width: 208px;
+  }
+}
+
+@media (max-width: 310px) {
+  .answer {
+    width: 198px;
+  }
+}
+
+@media (max-width: 300px) {
+  .answer {
+    width: 188px;
   }
 }
